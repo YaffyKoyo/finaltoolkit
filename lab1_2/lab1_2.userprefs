@@ -1,0 +1,16 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\lab3\Assets\Scripts\Map\BoardManager.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Map\BoardManager.cs" Line="30" Column="51" />
+      <File FileName="Assets\Scripts\FSM\Miner.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\FSM\MinerStates.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\FSM\ElsaState.cs" Line="1" Column="1" />
+      <File FileName="..\lab3\Assets\Scripts\Map\BoardManager.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
