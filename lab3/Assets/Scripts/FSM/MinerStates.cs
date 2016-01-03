@@ -12,12 +12,7 @@ public sealed class EnterMineAndDigForNugget:State<Miner>
 			//if (Vector3.Distance (m.transform.position, GameObject.FindGameObjectWithTag ("goldmine").transform.position) >= 0.01f) 
 			m.OnRoad (GameObject.FindGameObjectWithTag ("goldmine").transform.position);
 			m.Location = Locations.goldmine;
-
-			//else 	m.ChangeLocation(Locations.goldmine);
 		}
-
-//		if (Vector3.Distance (m.transform.position, GameObject.FindGameObjectWithTag ("goldmine").transform.position) <= 0.01f) {
-//			m.ChangeLocation (Locations.goldmine);}
 	}
 
 	public override void Execute (Miner m)
@@ -48,20 +43,6 @@ public sealed class EnterMineAndDigForNugget:State<Miner>
 	}
 }
 
-//public sealed class OnTheWay:State<Miner>{
-//	public override void Enter (Miner m){
-//		Debug.Log("Miner Bob: I'm on the WAYYYYYY");
-//	}
-//	public override void Executre(Miner m){
-//
-//	}
-//	public override void Exit(Miner m){
-//
-//	}
-//	public override bool OnMessage(Miner m){
-//
-//	}
-//}
 
 public sealed class VisitBankAndDepositGold:State<Miner>
 {
@@ -108,6 +89,7 @@ public sealed class GoHomeAndSleepTillReseted:State<Miner>
 	{
 		if (m.Location != Locations.home) {
 			Debug.Log ("Miner Bob: Going back to home");
+			m.OnRoad (GameObject.FindGameObjectWithTag ("home").transform.position);
 			m.ChangeLocation (Locations.home);
 			Messaging.DispatchMessage (0, m.ID, m.wifeId, MessageType.HiHoneyImHome);
 		}
@@ -115,12 +97,14 @@ public sealed class GoHomeAndSleepTillReseted:State<Miner>
 
 	public override void Execute (Miner m)
 	{
-		if (m.Fatigue < m.Tiredness) {
-			Debug.Log ("Miner Bob:  All mah fatigued has drained");
-			m.ChangeState (new EnterMineAndDigForNugget ());
-		} else {
-			m.Fatigue--;
-			Debug.Log ("Miner Bob:  ZZZZZ.....");
+		if (Vector3.Distance (m.transform.position, GameObject.FindGameObjectWithTag ("home").transform.position) == 0.0f) {
+			if (m.Fatigue < m.Tiredness) {
+				Debug.Log ("Miner Bob:  All mah fatigued has drained");
+				m.ChangeState (new EnterMineAndDigForNugget ());
+			} else {
+				m.Fatigue--;
+				Debug.Log ("Miner Bob:  ZZZZZ.....");
+			}
 		}
 	}
 
@@ -150,16 +134,19 @@ public sealed class QuenchThirst:State<Miner>
 	{
 		if (m.Location != Locations.bar) {
 			Debug.Log ("Miner Bob:  need some fun dude...");
+			m.OnRoad (GameObject.FindGameObjectWithTag ("bar").transform.position);
 			m.ChangeLocation (Locations.bar);
 		}
 	}
 
 	public override void Execute (Miner m)
 	{
-		m.Thirst = 0;
-		m.MoneyInBank -= 2;
-		Debug.Log ("Miner Bob:  That's mighty tidy funny....");
-		m.ChangeState (new EnterMineAndDigForNugget ());
+		if (Vector3.Distance (m.transform.position, GameObject.FindGameObjectWithTag ("bar").transform.position) == 0.0f) {
+			m.Thirst = 0;
+			m.MoneyInBank -= 2;
+			Debug.Log ("Miner Bob:  That's mighty tidy funny....");
+			m.ChangeState (new EnterMineAndDigForNugget ());
+		}
 	}
 
 	public override void Exit (Miner m)
