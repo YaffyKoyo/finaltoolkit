@@ -4,6 +4,10 @@ using System.Collections;
 public sealed class EnterMineAndDigForNugget:State<Miner>
 {
 
+	IEnumerator wait(int t){
+		yield return new WaitForSeconds (t);
+	}
+
 	public override void Enter (Miner m)
 	{
 		//Debug.Log(Time.frameCount);
@@ -15,10 +19,12 @@ public sealed class EnterMineAndDigForNugget:State<Miner>
 		}
 	}
 
+
+
 	public override void Execute (Miner m)
 	{
 		if (Vector3.Distance (m.transform.position, GameObject.FindGameObjectWithTag ("goldmine").transform.position) == 0.0f) {
-
+			//StartCoroutine (wait (2));
 			m.AddToGoldCarried (1);
 			//m.Thirst++;
 			Debug.Log ("Picking up nugget and that's..." + m.GoldCarried);
@@ -202,6 +208,9 @@ public sealed class MinerGlobalState:State<Miner>
 	{
 		return false;
 	}
+
+
 }
+	
 
 

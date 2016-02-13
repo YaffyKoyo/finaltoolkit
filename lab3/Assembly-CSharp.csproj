@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\Map\BoardManager.cs" />
      <Compile Include="Assets\Scripts\Map\GameManager.cs" />
      <Compile Include="Assets\Scripts\Map\PlayerSpawner.cs" />
+     <Compile Include="Assets\Scripts\Menu\startButoon.cs" />
      <Compile Include="Assets\Scripts\pathfinding\Grid.cs" />
      <Compile Include="Assets\Scripts\pathfinding\Node.cs" />
      <Compile Include="Assets\Scripts\pathfinding\PathRequestManager.cs" />
