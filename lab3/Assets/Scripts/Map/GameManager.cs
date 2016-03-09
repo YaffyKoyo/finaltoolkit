@@ -34,9 +34,10 @@ public class GameManager : MonoBehaviour
 		gridGen.CreateGrid();
 		playerSpawner = GameObject.Find("PlayerSpawner");
 	}
+		
 
 	void Update ()
 	{
-
+		
 	}
 }

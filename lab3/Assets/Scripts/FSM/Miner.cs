@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public enum Locations { goldmine, bar, bank, home };
 
@@ -15,12 +16,15 @@ public class Miner : Agent {
 	public int           Fatigue = 0;
 	public int 			 Tiredness = 2;
 	public int 			wifeId = 1;
+	public Text stateText;
+
 	//Unit unit;
 
 	//private Unit unit;
 
 
 	public void Awake() {
+		stateText = GameObject.Find ("stateText").GetComponent<Text>();
 		Debug.Log("Miner awakes...");
 		FSM = new FiniteStateMachine<Miner>();
 		FSM.Configure(this, new EnterMineAndDigForNugget());
