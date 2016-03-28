@@ -20,6 +20,7 @@ public class FiniteStateMachine <T>  {
 	
 	public void  Update() {
 		if (GlobalState != null)  GlobalState.Execute(Owner);
+
 		if (CurrentState != null) CurrentState.Execute(Owner);
 	}
 	

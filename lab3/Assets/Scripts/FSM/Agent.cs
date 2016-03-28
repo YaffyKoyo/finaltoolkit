@@ -46,7 +46,7 @@ abstract public class Agent : MonoBehaviour {
 				currentWaypoint = path[targetIndex];
 			}
 			transform.position = Vector3.MoveTowards(transform.position,currentWaypoint,speed * Time.deltaTime);
-			Debug.Log("MOOOOOOOOOOOOOVVVVVVVVVVVVVVIIIIIIIIIIIIIIINNNNNNNNNGGGGGG");
+			Debug.Log("MOVINGGGGGGGGGGG");
 			
 			yield return null;	
 		}

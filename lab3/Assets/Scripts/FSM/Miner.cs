@@ -36,7 +36,14 @@ public class Miner : Agent {
 	
 	public void ChangeState(State<Miner> e) {
 		FSM.ChangeState(e);
+		StartCoroutine (wait ());
 	}
+
+	IEnumerator wait(){
+		yield return new WaitForSeconds (5);
+	}
+
+
 
 	void Start(){
 		//OnRoad(GameObject.FindGameObjectWithTag("bar").transform.position);

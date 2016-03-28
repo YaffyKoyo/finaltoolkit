@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class GameManager : MonoBehaviour
 	private BoardManager boardScript;                       //Store a reference to our BoardManager which will set up the level.
 	private int level = 3;
 	GameObject Elsa;
-	GameObject Miner;
+	Miner miner;
 	GameObject playerSpawner;
 	Grid gridGen;
 	//Astar Astar;
@@ -28,6 +29,10 @@ public class GameManager : MonoBehaviour
 		InitGame ();
 	}
 
+	void Start(){
+		miner = FindObjectOfType<Miner>();
+	}
+
 	void InitGame ()
 	{
 		boardScript.SetupScene (level);
@@ -38,6 +43,9 @@ public class GameManager : MonoBehaviour
 
 	void Update ()
 	{
-		
+		if (miner.MoneyInBank > 20) {
+			miner.MoneyInBank = 0;
+			SceneManager.LoadScene("lab3_v1");
+		}
 	}
 }
