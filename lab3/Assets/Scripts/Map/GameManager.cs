@@ -21,11 +21,9 @@ public class GameManager : MonoBehaviour
 			instance = this;
 		else if (instance != this)
 			Destroy (gameObject);
-		DontDestroyOnLoad (gameObject);
 		gridGen = GetComponent<Grid>();
 
 		boardScript = GetComponent<BoardManager> ();
-//		Elsa = GameObject.Find("ElsatheFinder");
 		InitGame ();
 	}
 
@@ -43,9 +41,10 @@ public class GameManager : MonoBehaviour
 
 	void Update ()
 	{
-		if (miner.MoneyInBank > 20) {
+		if (miner.MoneyInBank > 10) {
 			miner.MoneyInBank = 0;
 			SceneManager.LoadScene("lab3_v1");
+
 		}
 	}
 }
